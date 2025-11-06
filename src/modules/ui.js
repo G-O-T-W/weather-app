@@ -1,7 +1,8 @@
 import { DateTime } from 'luxon';
 
 export default class UI {
-  async display(weatherData) {
+
+  async display(weatherData, unit) {
     const location = (() => {
       // Sentence Case
       return weatherData.address.toLowerCase()
@@ -11,6 +12,8 @@ export default class UI {
     })();
     const time = DateTime.now().toFormat("hh:mm a")
     const currentTemp = weatherData.currentConditions.feelslike;
+    const minTemp = weatherData.days[0].tempmin;
+    const maxTemp = weatherData.days[0].tempmax;
     const humidity = weatherData.currentConditions.humidity;
     const aqi = weatherData.currentConditions.aqius;
     let sunrise = weatherData.currentConditions.sunrise; //fetch
@@ -24,18 +27,23 @@ export default class UI {
     // Console logging
     console.log(location, time);
     console.log("Current Temperature: ", currentTemp);
+    console.log("Min Temperature: ", minTemp);
+    console.log("Max Temperature: ", maxTemp);
     console.log("Humidity: ", humidity);
     console.log("AQI: ", aqi);
     console.log("Sunrise: ", sunrise);
     console.log("Sunset: ", sunset);
-    // console.log(weatherData); 
+    console.log(weatherData); 
     
     // Change DOM
     const h1 = document.querySelector(".heading h1");
     h1.textContent = `${location}, ${time}`;
     
     const paraTemp = document.getElementById("temp-data");
-    paraTemp.textContent = `${currentTemp} °C`;
+    paraTemp.textContent = `${currentTemp} ${unit}`;
+
+    const paraMinMax = document.getElementById("minmax");
+    paraMinMax.textContent = `High ${minTemp} ${unit} | Low ${maxTemp} ${unit}`;
     
     const paraAQI = document.getElementById("aqi-data");
     paraAQI.textContent = `${aqi}`;
@@ -48,6 +56,11 @@ export default class UI {
     paraSunrise.textContent = `${sunrise}`;
     paraSunset.textContent = `${sunset}`;
 
+  }
+
+  changeUnitOfButton() {
+    const toggleButton = document.getElementById("toggle-btn");
+    toggleButton.textContent = (toggleButton.textContent == '°C') ? '°F' : '°C';
   }
 
   clearDisplay() {

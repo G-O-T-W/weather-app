@@ -131,6 +131,7 @@ body {
   display: flex;
   justify-content: center;
   gap: 8px;
+
 }
 
 #search-input {
@@ -148,6 +149,22 @@ body {
 }
 
 #search-submit-btn:hover {
+  background-color: var(--accent-clr);
+  cursor: pointer;
+}
+
+#toggle-btn {
+  position: relative;
+  top: -50px;
+  left: 10px;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  border: 1px solid var(--border-clr);
+
+}
+
+#toggle-btn:hover {
   background-color: var(--accent-clr);
   cursor: pointer;
 }
@@ -191,14 +208,11 @@ body {
 
 }
 
-.label {
+.label{
   font-size: 1.6rem;
   color: var(--label-clr);
 }
 
-.weather-data {
-  font-size: ;
-}
 
 .icon-label-group {
   display: flex;

@@ -6,17 +6,29 @@ export default class Controller {
     this.weatherData;
     this.weather = new Weather();
     this.ui = new UI();
+    this._query;
   }
 
-  async render(location) {
-    console.log('Location Searched: ', location);
+  set query(query) {
+    this._query = query;
+  }
+
+  async render() {
+    console.log('Location Searched: ', this._query);
     try {
-      this.weather.location = location; // setter method
+      this.weather.location = this._query; // setter method
       this.weatherData = await this.weather.getData();
-      this.ui.display(this.weatherData);
+      const unit = this.weather._unitGroup == "metric" ? '°C' : '°F';
+      this.ui.display(this.weatherData, unit);
     } catch (err) {
-      console.log(new Error(err));
+      console.log(err);
     }
+  }
+
+  toggleButtonHandler(){
+    this.ui.changeUnitOfButton();
+    this.weather.toggleUnits();
+    this.render();
   }
 }
 
