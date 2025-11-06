@@ -97,8 +97,6 @@ body {
   /* Setting the font size of our body to be 1.6rem, which scales us back up to 
     an effective font size of 16px for all visible text on the page */
   font-size: 1.6rem;
-
-
 }
 
 /* Material Fonts Outline Style */
@@ -123,7 +121,6 @@ body {
 
 .container {
   flex-grow: 1;
-
 }
 
 /* Utils Style */
@@ -146,7 +143,7 @@ body {
   padding: 8px;
   border-radius: 50%;
   display: flex;
-  border: 1px solid var(--border-clr)
+  border: 1px solid var(--border-clr);
 }
 
 #search-submit-btn:hover {
