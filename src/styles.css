@@ -4,6 +4,7 @@
  * Note: Use all: revert; to use original browser default 
  */
 @import '../node_modules/modern-normalize/modern-normalize.css';
+@import url('https://fonts.googleapis.com/css2?family=Honk&display=swap');
 
 :root {
   line-height: 1.5;
@@ -119,6 +120,11 @@ body {
   flex-direction: column;
 }
 
+.heading h1 {
+  font-family: 'Honk', monospace;
+  font-size: 6.4rem;
+}
+
 /* Container Styles */
 
 .container {
@@ -149,24 +155,20 @@ body {
   border: 1px solid var(--border-clr);
 }
 
-#search-submit-btn:hover {
+#search-submit-btn:hover,
+#toggle-btn:hover {
   background-color: var(--accent-clr);
   cursor: pointer;
 }
 
 #toggle-btn {
-  position: relative;
-  top: -50px;
-  left: 10px;
-  padding: 8px;
+  position: absolute;
+  bottom: 64px;
+  right: 32px;
+  padding: 16px;
   border-radius: 50%;
   display: flex;
   border: 1px solid var(--border-clr);
-}
-
-#toggle-btn:hover {
-  background-color: var(--accent-clr);
-  cursor: pointer;
 }
 
 /* Main Content */
@@ -206,6 +208,7 @@ body {
   gap: 4px;
   font-size: 1.8rem;
   background: var(--card-bg-clr);
+  opacity: 0.9;
 }
 
 .label{
