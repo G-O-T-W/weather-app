@@ -80,6 +80,12 @@ h6 {
 
 /* Custom CSS */
 
+/* Variables */
+:root {
+  --border-clr: #797070;
+  --accent-clr: #0885eb;
+}
+
 /* https://www.aleksandrhovhannisyan.com/blog/62-5-percent-font-size-trick/ */
 /* Don’t use it unless you know you’re never going to need to import other UI component libraries */
 html {
@@ -91,13 +97,76 @@ body {
   /* Setting the font size of our body to be 1.6rem, which scales us back up to 
     an effective font size of 16px for all visible text on the page */
   font-size: 1.6rem;
+
+
 }
 
 /* Material Fonts Outline Style */
+
 .material-symbols-outlined {
   font-variation-settings:
     'FILL' 0,
     'wght' 400,
     'GRAD' 0,
     'opsz' 20;
+}
+
+/* Main Container Styles */
+
+.main-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Container Styles */
+
+.container {
+  flex-grow: 1;
+
+}
+
+/* Utils Style */
+
+#search-form {
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+#search-input {
+  border-radius: 5px;
+  border: 1px solid var(--border-clr);
+  padding: 8px;
+  width: 30%;
+}
+
+#search-submit-btn {
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  border: 1px solid var(--border-clr)
+}
+
+#search-submit-btn:hover {
+  background-color: var(--accent-clr);
+  cursor: pointer;
+}
+
+/* Footer Styles */
+
+.footer {
+  flex-grow: 0;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+
+.github-logo {
+  width: 24px; /* Adjust size as needed */
+  height: auto;
+  fill: #333; /* Change color as needed */
 }
