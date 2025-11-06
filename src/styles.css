@@ -84,7 +84,8 @@ h6 {
 :root {
   --border-clr: #797070;
   --accent-clr: #0885eb;
-  --label-clr: #0000008f;
+  --label-clr: #616060;
+  --card-bg-clr: #ffffff;
 }
 
 /* https://www.aleksandrhovhannisyan.com/blog/62-5-percent-font-size-trick/ */
@@ -161,7 +162,6 @@ body {
   border-radius: 50%;
   display: flex;
   border: 1px solid var(--border-clr);
-
 }
 
 #toggle-btn:hover {
@@ -205,7 +205,7 @@ body {
   flex-direction: column;
   gap: 4px;
   font-size: 1.8rem;
-
+  background: var(--card-bg-clr);
 }
 
 .label{

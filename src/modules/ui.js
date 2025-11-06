@@ -18,6 +18,9 @@ export default class UI {
     const aqi = weatherData.currentConditions.aqius;
     let sunrise = weatherData.currentConditions.sunrise; //fetch
     let sunset = weatherData.currentConditions.sunset; //fetch
+    const icon = weatherData.currentConditions.icon;
+
+    this.setBackground(icon);
 
     if(sunrise != "")
       sunrise = DateTime.fromISO(sunrise).toFormat("hh:mm a"); //format
@@ -42,6 +45,11 @@ export default class UI {
     const paraTemp = document.getElementById("temp-data");
     paraTemp.textContent = `${currentTemp} ${unit}`;
 
+    const weatherIcon = document.querySelector(".icon.weather");
+    await import(`../../assets/weather-icon-pack/${icon}.svg`).then((imgObj) => {
+      weatherIcon.src = imgObj.default;
+    });
+
     const paraMinMax = document.getElementById("minmax");
     paraMinMax.textContent = `High ${minTemp} ${unit} | Low ${maxTemp} ${unit}`;
     
@@ -56,6 +64,18 @@ export default class UI {
     paraSunrise.textContent = `${sunrise}`;
     paraSunset.textContent = `${sunset}`;
 
+  }
+
+  async setBackground(weather){
+    const container = document.querySelector('.container');
+    await import(`../../assets/wallpapers/${weather}.jpg`).then((imgObj) => {
+      container.style.backgroundImage = `url(${imgObj.default})`;
+      container.style.backgroundRepeat = 'no-repeat';
+      container.style.backgroundSize = 'cover';
+      container.style.backgroundPosition = 'center';
+
+
+    });
   }
 
   changeUnitOfButton() {
