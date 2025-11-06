@@ -84,6 +84,7 @@ h6 {
 :root {
   --border-clr: #797070;
   --accent-clr: #0885eb;
+  --label-clr: #0000008f;
 }
 
 /* https://www.aleksandrhovhannisyan.com/blog/62-5-percent-font-size-trick/ */
@@ -154,10 +155,63 @@ body {
 /* Main Content */
 
 .main-display {
-  
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  padding: 16px;
 }
 
-/* Cards Styles */
+.heading {
+  padding: 8px;
+  font-size: 3.6rem;
+}
+
+.card-container {
+  display: grid;
+  grid-template: 1fr 1fr / 1fr 1fr;
+  gap: 8px;
+}
+
+
+/* Card Styles */
+
+.card {
+  border: 1px solid var(--border-clr);
+  border-radius: 10px;
+  font-size: 2.4rem;
+  padding: 3.6rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 1.8rem;
+
+}
+
+.label {
+  font-size: 1.6rem;
+  color: var(--label-clr);
+}
+
+.weather-data {
+  font-size: ;
+}
+
+.icon-label-group {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Icon Styles */
+.icon {
+  display: inline-block;
+  height: 2.4rem;
+  width: 2.4rem;
+}
 
 /* Footer Styles */
 

@@ -32,10 +32,28 @@
             <h1></h1>
           </div>
           <div class="card-container">
-            <div class="card-temperature"></div>
-            <div class="card-aqi"></div>
-            <div class="card-humidity"></div>
-            <div class="card-daylight"></div>
+            <div class="card temperature">
+              <p class="label">Feels Like</p> 
+              <p id="temp-data"></p>
+            </div>
+            <div class="card aqi">
+              <p class="label">Air Quality</p>
+              <p id="aqi-data"></p>
+            </div>
+            <div class="card humidity">
+              <p class="label">Humidity</p>
+              <p id="humidity-data"></p>
+            </div>
+            <div class="card daylight">
+              <div class="icon-label-group sunrise">
+                <img src="../assets/sunrise.svg" alt="sunrise logo" class="icon">
+                <p id="sunrise-data"></p>
+              </div>
+              <div class="icon-label-group sunset">
+                <img src="../assets/sunset.svg" alt="sunset logo" class="icon">
+                <p id="sunset-data"></p>
+              </div>
+            </div>
           </div>
         </div>
         <div class="hourly-display"></div>

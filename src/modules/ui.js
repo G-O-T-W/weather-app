@@ -1,7 +1,14 @@
 import { DateTime } from 'luxon';
+
 export default class UI {
-  display(weatherData) {
-    const location = weatherData.address;
+  async display(weatherData) {
+    const location = (() => {
+      // Sentence Case
+      return weatherData.address.toLowerCase()
+            .split(' ')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ');
+    })();
     const time = DateTime.now().toFormat("hh:mm a")
     const currentTemp = weatherData.currentConditions.feelslike;
     const humidity = weatherData.currentConditions.humidity;
@@ -21,34 +28,30 @@ export default class UI {
     console.log("AQI: ", aqi);
     console.log("Sunrise: ", sunrise);
     console.log("Sunset: ", sunset);
+    // console.log(weatherData); 
     
     // Change DOM
     const h1 = document.querySelector(".heading h1");
     h1.textContent = `${location}, ${time}`;
     
-    const cardTemp = document.querySelector(".card-temperature");
-    const paraTemp = document.createElement("p");
-    paraTemp.textContent = `${currentTemp} C`;
-    cardTemp.appendChild(paraTemp);
+    const paraTemp = document.getElementById("temp-data");
+    paraTemp.textContent = `${currentTemp} °C`;
     
-    const cardAQI = document.querySelector(".card-aqi");
-    const paraAQI = document.createElement("p");
+    const paraAQI = document.getElementById("aqi-data");
     paraAQI.textContent = `${aqi}`;
-    cardAQI.appendChild(paraAQI);
 
-    const cardHumidity = document.querySelector(".card-humidity");
-    const paraHumidity = document.createElement("p");
+    const paraHumidity = document.getElementById("humidity-data");
     paraHumidity.textContent = `${humidity} %`;
-    cardHumidity.appendChild(paraHumidity);
 
-    const cardDaylight = document.querySelector(".card-daylight");
-    const paraSunrise = document.createElement("p");
-    const paraSunset = document.createElement("p");
+    const paraSunrise = document.getElementById("sunrise-data");
+    const paraSunset = document.getElementById("sunset-data");
     paraSunrise.textContent = `${sunrise}`;
     paraSunset.textContent = `${sunset}`;
-    cardDaylight.appendChild(paraSunrise);
-    cardDaylight.appendChild(paraSunset);
 
-  
+  }
+
+  clearDisplay() {
+    
+
   }
 }
