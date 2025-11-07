@@ -11,6 +11,7 @@ export default class UI {
     this.setBackground(icon);
     this.displayWidgets(weatherData, unit);
     this.displayHourlyData(weatherData, unit);
+    this.displayForecast(weatherData, unit);
   }
 
   async displayWidgets(weatherData, unit) {
@@ -77,7 +78,7 @@ export default class UI {
 
   async displayHourlyData(weatherData, unit) {
     // Change DOM of Hourly Display
-    console.log('Hourly Data:');
+    // console.log('Hourly Data:');
     const hourlyData = weatherData.days[0].hours;
     const container = document.querySelector('.hourly-display');
     container.replaceChildren(); // clear the div
@@ -85,7 +86,7 @@ export default class UI {
       const time = DateTime.fromFormat(key, 'H').toFormat('h a');
       const icon = value.icon;
       const temp = value.feelslike;
-      console.log(time, icon, temp); // Console Logging
+      // console.log(time, icon, temp);  Console Logging
 
       const div = document.createElement('div');
       div.classList.add('hour', 'card', 'hidden'); // hide all slides
@@ -110,12 +111,79 @@ export default class UI {
     this.showCards();
   }
 
+  async displayForecast(weatherData, unit) {
+    const container = document.querySelector('.forecast-container');
+    container.replaceChildren(); // clear sidebar
+    const forecast = weatherData.days;
+    let dt = DateTime.now();
+    console.log('Forecast:');
+    for (let i = 0; i < 7; i++) {
+      // Weekly Forecast
+      const date = dt.toFormat('d LLL');
+      const temp = forecast[i].feelslike;
+      const humidity = forecast[i].humidity;
+      const icon = forecast[i].icon;
+      const descr = forecast[i].conditions;
+      console.log(date, icon, temp, humidity, descr); // console logging
+      dt = dt.plus({ days: 1 });
+
+      // Change DOM
+      const div = document.createElement('div');
+      div.classList.add('sidebar-card');
+
+      const paraDate = document.createElement('p');
+      paraDate.textContent = date;
+      paraDate.classList.add('label');
+
+      const divWeather = document.createElement('div');
+      divWeather.classList.add('weather-data-row');
+
+      const tempGroup = document.createElement('div');
+      tempGroup.classList.add('icon-label-group');
+
+      const weatherIcon = document.createElement('img');
+      weatherIcon.classList.add('icon');
+      await import(`../../assets/weather-icon-pack/${icon}.svg`).then(
+        (imgObj) => {
+          weatherIcon.src = imgObj.default;
+        }
+      );
+
+      const paraTemp = document.createElement('p');
+      paraTemp.textContent = `${temp} ${unit}`;
+
+      tempGroup.append(weatherIcon, paraTemp);
+
+      const humidityGroup = document.createElement('div');
+      humidityGroup.classList.add('icon-label-group');
+
+      const humidityIcon = document.createElement('img');
+      humidityIcon.classList.add('icon');
+      await import(`../../assets/humidity.svg`).then((imgObj) => {
+        humidityIcon.src = imgObj.default;
+      });
+
+      const paraHumidity = document.createElement('p');
+      paraHumidity.textContent = `${humidity} %`;
+
+      humidityGroup.append(humidityIcon, paraHumidity);
+
+      const paraDescr = document.createElement('p');
+      paraDescr.textContent = `${descr}`;
+      paraDescr.classList.add('label');
+
+      divWeather.append(tempGroup, humidityGroup, paraDescr); // create sidebar widget
+      div.append(paraDate, divWeather); // create sidebar card
+      container.appendChild(div);
+    }
+  }
+
   showCards() {
     const leftButton = document.querySelector('.prev');
     const rightButton = document.querySelector('.next');
     leftButton.classList.remove('hidden');
     rightButton.classList.remove('hidden');
-    
+
     const hourCards = document.querySelectorAll('.hour');
     hourCards.forEach((card) => {
       // Hide All Cards First
@@ -158,6 +226,16 @@ export default class UI {
   changeUnitOfButton() {
     const toggleButton = document.getElementById('toggle-btn');
     toggleButton.textContent = toggleButton.textContent == '°C' ? '°F' : '°C';
+  }
+
+  toggleSidebar() {
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.style.display = sidebar.style.display == 'block' ? 'none' : 'block';
+    const span = document.querySelector('#sidebar-toggle-btn span');
+    span.textContent =
+      span.textContent == 'left_panel_open'
+        ? 'left_panel_close'
+        : 'left_panel_open';
   }
 
   clearDisplay() {}

@@ -31,3 +31,9 @@ prevSlide.addEventListener(
   'click',
   controller.prevButtonHandler.bind(controller)
 );
+
+const sidebarButton = document.querySelector('#sidebar-toggle-btn');
+sidebarButton.addEventListener(
+  'click',
+  controller.sidebarButtonHandler.bind(controller)
+);

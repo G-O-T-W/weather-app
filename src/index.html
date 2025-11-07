@@ -12,10 +12,18 @@
     <title>Weather App</title>
   </head>
   <body>
+    <div class="sidebar">
+      <h1>Weekly Forecast</h1>
+      <div class="forecast-container"></div>
+    </div>
     <div class="main-container">
-      <div class="sidebar"></div>
       <div class="container">
         <div class="utils">
+          <div class="sidebar-toggle">
+            <button id="sidebar-toggle-btn" title="Toggle Weekly Forecast">
+              <span class="material-symbols-outlined">left_panel_open</span>
+            </button>
+          </div>
           <form id="search-form">
             <input
               type="text"
@@ -23,11 +31,11 @@
               id="search-input"
               placeholder="New Delhi, IN"
             />
-            <button type="submit" id="search-submit-btn">
+            <button type="submit" id="search-submit-btn" title="Search">
               <span class="material-symbols-outlined">search</span>
             </button>
+            <button id="toggle-btn" title="Toggle Units">°C</button>
           </form>
-          <button id="toggle-btn">°C</button>
         </div>
         <div class="main-display">
           <div class="heading">

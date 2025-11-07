@@ -101,6 +101,7 @@ body {
     an effective font size of 16px for all visible text on the page */
   font-size: 1.6rem;
   font-family: 'Gruppo', sans-serif;
+  display: flex;
 }
 
 /* Material Fonts Outline Style */
@@ -113,9 +114,60 @@ body {
     'opsz' 20;
 }
 
+/* Sidebar Styles */
+
+.sidebar {
+  display: none;
+  min-width: 20%;
+  padding: 0 32px;
+}
+
+.sidebar h1 {
+  margin: 24px 0;
+  font-size: 3.6rem;
+  font-weight: 1000;
+  text-align: center;
+}
+
+.forecast-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sidebar-card {
+  padding: 8px;
+  border-bottom: 1px solid var(--border-clr);
+}
+
+.weather-data-row {
+  padding: 8px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sidebar-toggle {
+  position: relative;
+  top: 20px;
+  left: 30px;
+  width: 50px;
+  height: 50px;
+}
+
+#sidebar-toggle-btn {
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid var(--border-clr);
+}
+
 /* Main Container Styles */
 
 .main-container {
+  flex-grow: 1;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -209,7 +261,7 @@ body {
   align-items: center;
   flex-direction: column;
   gap: 4px;
-  font-size: 2.4rem;
+  font-size: 3.6rem;
   background: var(--card-bg-clr);
   opacity: 0.9;
 }
@@ -256,7 +308,7 @@ body {
 }
 
 .label {
-  font-size: 2rem;
+  font-size: 2.4rem;
   color: var(--label-clr);
 }
 

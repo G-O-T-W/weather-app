@@ -32,12 +32,14 @@ export default class Controller {
   }
 
   nextButtonHandler() {
-    console.log('Pressed: Right');
     this.ui.shiftSlideRight();
   }
 
   prevButtonHandler() {
-    console.log('Pressed: Left');
     this.ui.shiftSlideLeft();
+  }
+
+  sidebarButtonHandler() {
+    this.ui.toggleSidebar();
   }
 }
