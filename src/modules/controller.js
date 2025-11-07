@@ -30,6 +30,16 @@ export default class Controller {
     this.weather.toggleUnits();
     this.render();
   }
+
+  nextButtonHandler() {
+    console.log("Pressed: Right");
+    this.ui.shiftSlideRight();
+  }
+
+  prevButtonHandler() {
+    console.log("Pressed: Left");
+    this.ui.shiftSlideLeft();
+  }
 }
 
 

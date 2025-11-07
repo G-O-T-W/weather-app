@@ -130,6 +130,9 @@ body {
 
 .container {
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* Utils Style */
@@ -140,7 +143,7 @@ body {
   justify-content: center;
   gap: 8px;
   margin-top: 8px;
-
+  margin-bottom: 32px;
 }
 
 #search-input {
@@ -212,6 +215,31 @@ body {
   opacity: 0.9;
 }
 
+.slides {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.prev,
+.next {
+  cursor: pointer;
+  color: var(--card-bg-clr);
+  font-weight: bold;
+  font-size: 3.6rem;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  background-color: var(--border-clr);
+}
+
+.hourly-display {
+  margin: 64px 0;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+}
+
 .hour.card {
   font-size: 1rem;
   padding: 8px;
@@ -219,23 +247,14 @@ body {
   min-width: 150px;
 }
 
-.hourly-display {
-  margin: 16px auto;
-  display: flex;
-  justify-content: center;
-  gap: 4px;
+.hour.card.hidden {
+  display: none;
 }
+
 
 .label{
   font-size: 2rem;
   color: var(--label-clr);
-}
-
-
-.icon-label-group {
-  display: flex;
-  gap: 8px;
-  align-items: center;
 }
 
 /* Icon Styles */
@@ -243,6 +262,12 @@ body {
   display: inline-block;
   height: 2.4rem;
   width: 2.4rem;
+}
+
+.icon-label-group {
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }
 
 /* Footer Styles */

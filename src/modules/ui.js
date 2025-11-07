@@ -2,7 +2,19 @@ import { DateTime } from 'luxon';
 
 export default class UI {
 
-  async display(weatherData, unit) {
+  constructor() {
+    this.slideIndex = 0; //init
+    this.slideOffset = 4; // how many slides to show
+  }
+
+  display(weatherData, unit) {
+    const icon = weatherData.currentConditions.icon;
+    this.setBackground(icon);
+    this.displayWidgets(weatherData, unit);
+    this.displayHourlyData(weatherData, unit);
+  }
+
+  async displayWidgets(weatherData, unit){
     const location = (() => {
       // Convert To Sentence Case
       return weatherData.address.toLowerCase()
@@ -11,8 +23,6 @@ export default class UI {
             .join(' ');
     })();
     const icon = weatherData.currentConditions.icon;
-    this.setBackground(icon);
-    
     const tzone = weatherData.timezone;
     const time = DateTime.now().setZone(tzone).toFormat("hh:mm a");
     const currentTemp = weatherData.currentConditions.feelslike;
@@ -63,11 +73,14 @@ export default class UI {
     const paraSunset = document.getElementById("sunset-data");
     paraSunrise.textContent = `${sunrise}`;
     paraSunset.textContent = `${sunset}`;
+  }
 
+  async displayHourlyData(weatherData, unit) {
     // Change DOM of Hourly Display
     console.log("Hourly Data:");
     const hourlyData = weatherData.days[0].hours;
-    const hourlyCards = document.querySelector('.hourly-display');
+    const container = document.querySelector('.hourly-display');
+    container.replaceChildren(); // clear the div
     for (const [key, value] of Object.entries(hourlyData)) {
       const time = DateTime.fromFormat(key, "H").toFormat("h a");
       const icon = value.icon;
@@ -75,7 +88,7 @@ export default class UI {
       console.log(time, icon, temp); // Console Logging
 
       const div = document.createElement("div");
-      div.classList.add('card', 'hour');
+      div.classList.add('hour', 'card', 'hidden'); // hide all slides
 
       const paraTime = document.createElement("p");
       paraTime.classList.add("label");
@@ -91,9 +104,38 @@ export default class UI {
       paraTemp.textContent = `${temp} ${unit}`;
 
       div.append(paraTime, imgIcon, paraTemp);
-      hourlyCards.appendChild(div);
+      container.appendChild(div);
+    }
+
+    this.showCards();
+    
+  }
+
+  showCards() {
+    const hourCards = document.querySelectorAll(".hour");
+    hourCards.forEach((card) => {
+      // Hide All Cards First
+      card.classList.add('hidden');
+    });
+    const size = hourCards.length;
+    if(this.slideIndex >= size - this.slideOffset) { this.slideIndex = size - this.slideOffset};
+    if(this.slideIndex < 0) { this.slideIndex = 0 };
+    console.log(hourCards[this.slideIndex]);
+    for(let i = this.slideIndex; i < (this.slideIndex + this.slideOffset); i++) {
+      hourCards[i].classList.remove('hidden');
     }
   }
+
+  shiftSlideRight() {
+    this.slideIndex = this.slideIndex + 4;
+    this.showCards();
+  }
+
+  shiftSlideLeft() {
+    this.slideIndex = this.slideIndex - 4;
+    this.showCards();
+  }
+  
 
   async setBackground(weather){
     const container = document.querySelector('.container');
