@@ -197,7 +197,6 @@ body {
   gap: 8px;
 }
 
-
 /* Card Styles */
 
 .card {
@@ -233,6 +232,11 @@ body {
   background-color: var(--border-clr);
 }
 
+.prev.hidden,
+.next.hidden {
+  display: none;
+}
+
 .hourly-display {
   margin: 64px 0;
   display: flex;
@@ -251,8 +255,7 @@ body {
   display: none;
 }
 
-
-.label{
+.label {
   font-size: 2rem;
   color: var(--label-clr);
 }

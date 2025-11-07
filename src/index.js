@@ -15,10 +15,19 @@ formElement.addEventListener('submit', (e) => {
 });
 
 const toggleButton = document.getElementById('toggle-btn');
-toggleButton.addEventListener('click', controller.toggleButtonHandler.bind(controller));
+toggleButton.addEventListener(
+  'click',
+  controller.toggleButtonHandler.bind(controller)
+);
 
 const nextSlide = document.querySelector('.next');
-nextSlide.addEventListener('click', controller.nextButtonHandler.bind(controller));
+nextSlide.addEventListener(
+  'click',
+  controller.nextButtonHandler.bind(controller)
+);
 
 const prevSlide = document.querySelector('.prev');
-prevSlide.addEventListener('click', controller.prevButtonHandler.bind(controller));
+prevSlide.addEventListener(
+  'click',
+  controller.prevButtonHandler.bind(controller)
+);

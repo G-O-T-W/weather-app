@@ -13,6 +13,7 @@
   </head>
   <body>
     <div class="main-container">
+      <div class="sidebar"></div>
       <div class="container">
         <div class="utils">
           <form id="search-form">
@@ -34,9 +35,9 @@
           </div>
           <div class="card-container">
             <div class="card temperature">
-              <p class="label">Feels Like</p> 
+              <p class="label">Feels Like</p>
               <div class="icon-label-group">
-                <img alt="weather logo" class="icon weather">
+                <img alt="weather logo" class="icon weather" />
                 <p id="temp-data"></p>
               </div>
               <p class="label" id="minmax"></p>
@@ -51,11 +52,19 @@
             </div>
             <div class="card daylight">
               <div class="icon-label-group sunrise">
-                <img src="../assets/sunrise.svg" alt="sunrise logo" class="icon">
+                <img
+                  src="../assets/sunrise.svg"
+                  alt="sunrise logo"
+                  class="icon"
+                />
                 <p id="sunrise-data"></p>
               </div>
               <div class="icon-label-group sunset">
-                <img src="../assets/sunset.svg" alt="sunset logo" class="icon">
+                <img
+                  src="../assets/sunset.svg"
+                  alt="sunset logo"
+                  class="icon"
+                />
                 <p id="sunset-data"></p>
               </div>
             </div>

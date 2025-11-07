@@ -18,28 +18,26 @@ export default class Controller {
     try {
       this.weather.location = this._query; // setter method
       this.weatherData = await this.weather.getData();
-      const unit = this.weather._unitGroup == "metric" ? '°C' : '°F';
+      const unit = this.weather._unitGroup == 'metric' ? '°C' : '°F';
       this.ui.display(this.weatherData, unit);
     } catch (err) {
       console.log(err);
     }
   }
 
-  toggleButtonHandler(){
+  toggleButtonHandler() {
     this.ui.changeUnitOfButton();
     this.weather.toggleUnits();
     this.render();
   }
 
   nextButtonHandler() {
-    console.log("Pressed: Right");
+    console.log('Pressed: Right');
     this.ui.shiftSlideRight();
   }
 
   prevButtonHandler() {
-    console.log("Pressed: Left");
+    console.log('Pressed: Left');
     this.ui.shiftSlideLeft();
   }
 }
-
-

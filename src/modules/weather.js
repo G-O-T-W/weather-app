@@ -1,8 +1,8 @@
 export default class Weather {
   constructor() {
     this._location;
-    this._unitGroup = "metric";
-    this._APIKEY = "D8ZYESP7FSMGEYQ7ETXJJRJTX";
+    this._unitGroup = 'metric';
+    this._APIKEY = 'D8ZYESP7FSMGEYQ7ETXJJRJTX';
   }
 
   set location(location) {
@@ -14,9 +14,9 @@ export default class Weather {
     this._location = location;
   }
 
-  toggleUnits() { 
-    this._unitGroup = (this._unitGroup == "metric") ? "us" : "metric"; 
-    console.log("Units Changed To: ", this._unitGroup);
+  toggleUnits() {
+    this._unitGroup = this._unitGroup == 'metric' ? 'us' : 'metric';
+    console.log('Units Changed To: ', this._unitGroup);
   }
 
   async getData() {
