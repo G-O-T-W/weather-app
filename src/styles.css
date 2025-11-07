@@ -4,7 +4,7 @@
  * Note: Use all: revert; to use original browser default 
  */
 @import '../node_modules/modern-normalize/modern-normalize.css';
-@import url('https://fonts.googleapis.com/css2?family=Honk&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gruppo&family=Honk&display=swap');
 
 :root {
   line-height: 1.5;
@@ -84,7 +84,7 @@ h6 {
 /* Variables */
 :root {
   --border-clr: #797070;
-  --accent-clr: #0885eb;
+  --accent-clr: #4aa2eb;
   --label-clr: #616060;
   --card-bg-clr: #ffffff;
 }
@@ -100,6 +100,7 @@ body {
   /* Setting the font size of our body to be 1.6rem, which scales us back up to 
     an effective font size of 16px for all visible text on the page */
   font-size: 1.6rem;
+  font-family: 'Gruppo', sans-serif;
 }
 
 /* Material Fonts Outline Style */
@@ -138,6 +139,7 @@ body {
   display: flex;
   justify-content: center;
   gap: 8px;
+  margin-top: 8px;
 
 }
 
@@ -198,7 +200,6 @@ body {
 .card {
   border: 1px solid var(--border-clr);
   border-radius: 10px;
-  font-size: 2.4rem;
   padding: 3.6rem;
   text-align: center;
   display: flex;
@@ -206,13 +207,27 @@ body {
   align-items: center;
   flex-direction: column;
   gap: 4px;
-  font-size: 1.8rem;
+  font-size: 2.4rem;
   background: var(--card-bg-clr);
   opacity: 0.9;
 }
 
+.hour.card {
+  font-size: 1rem;
+  padding: 8px;
+  gap: 2px;
+  min-width: 150px;
+}
+
+.hourly-display {
+  margin: 16px auto;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+}
+
 .label{
-  font-size: 1.6rem;
+  font-size: 2rem;
   color: var(--label-clr);
 }
 
