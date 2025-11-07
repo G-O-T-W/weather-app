@@ -118,7 +118,7 @@ body {
 
 .sidebar {
   display: none;
-  min-width: 20%;
+  min-width: 25%;
   padding: 0 32px;
 }
 
@@ -155,13 +155,13 @@ body {
 }
 
 #sidebar-toggle-btn {
-  cursor: pointer;
   padding: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 10px;
   border: 1px solid var(--border-clr);
+  z-index: 2;
 }
 
 /* Main Container Styles */
@@ -199,6 +199,7 @@ body {
 }
 
 #search-input {
+  cursor: pointer;
   border-radius: 5px;
   border: 1px solid var(--border-clr);
   padding: 8px;
@@ -226,6 +227,7 @@ body {
   border-radius: 50%;
   display: flex;
   border: 1px solid var(--border-clr);
+  z-index: 2;
 }
 
 /* Main Content */
@@ -308,7 +310,7 @@ body {
 }
 
 .label {
-  font-size: 2.4rem;
+  font-size: 2rem;
   color: var(--label-clr);
 }
 

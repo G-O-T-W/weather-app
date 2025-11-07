@@ -6,7 +6,7 @@ export default class Controller {
     this.weatherData;
     this.weather = new Weather();
     this.ui = new UI();
-    this._query;
+    this._query = "New Delhi"; // init
   }
 
   set query(query) {

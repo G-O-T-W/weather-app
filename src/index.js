@@ -2,7 +2,6 @@ import './styles.css';
 import Controller from './modules/controller';
 
 const controller = new Controller();
-controller.query = 'New Delhi'; // Default
 controller.render();
 
 const formElement = document.getElementById('search-form');

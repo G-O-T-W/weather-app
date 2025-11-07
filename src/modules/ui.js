@@ -37,14 +37,14 @@ export default class UI {
     if (sunset != '') sunset = DateTime.fromISO(sunset).toFormat('hh:mm a'); //format
 
     // Console logging
-    console.log(location, time);
-    console.log('Current Temperature: ', currentTemp);
-    console.log('Min Temperature: ', minTemp);
-    console.log('Max Temperature: ', maxTemp);
-    console.log('Humidity: ', humidity);
-    console.log('AQI: ', aqi);
-    console.log('Sunrise: ', sunrise);
-    console.log('Sunset: ', sunset);
+    // console.log(location, time);
+    // console.log('Current Temperature: ', currentTemp);
+    // console.log('Min Temperature: ', minTemp);
+    // console.log('Max Temperature: ', maxTemp);
+    // console.log('Humidity: ', humidity);
+    // console.log('AQI: ', aqi);
+    // console.log('Sunrise: ', sunrise);
+    // console.log('Sunset: ', sunset);
     console.log(weatherData);
 
     // Change DOM of Main Display
@@ -62,7 +62,7 @@ export default class UI {
     );
 
     const paraMinMax = document.getElementById('minmax');
-    paraMinMax.textContent = `High ${minTemp} ${unit} | Low ${maxTemp} ${unit}`;
+    paraMinMax.textContent = `Low ${minTemp} ${unit}  |  High ${maxTemp} ${unit}`;
 
     const paraAQI = document.getElementById('aqi-data');
     paraAQI.textContent = `${aqi}`;
@@ -116,15 +116,15 @@ export default class UI {
     container.replaceChildren(); // clear sidebar
     const forecast = weatherData.days;
     let dt = DateTime.now();
-    console.log('Forecast:');
+    // console.log('Forecast:');
     for (let i = 0; i < 7; i++) {
       // Weekly Forecast
       const date = dt.toFormat('d LLL');
       const temp = forecast[i].feelslike;
       const humidity = forecast[i].humidity;
       const icon = forecast[i].icon;
-      const descr = forecast[i].conditions;
-      console.log(date, icon, temp, humidity, descr); // console logging
+      const descr = forecast[i].conditions.split(',')[0];
+      // console.log(date, icon, temp, humidity, descr); // console logging
       dt = dt.plus({ days: 1 });
 
       // Change DOM
@@ -171,6 +171,8 @@ export default class UI {
       const paraDescr = document.createElement('p');
       paraDescr.textContent = `${descr}`;
       paraDescr.classList.add('label');
+      paraDescr.style.minWidth = '150px';
+      paraDescr.style.textAlign = 'center';
 
       divWeather.append(tempGroup, humidityGroup, paraDescr); // create sidebar widget
       div.append(paraDate, divWeather); // create sidebar card
